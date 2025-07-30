@@ -160,7 +160,43 @@ function MarqueeImages() {
         </div>
       </div>
       
-      {/* Deleted the bottom maquee as requested */}
+      {/* Bottom Marquee */}
+      <div
+        className="relative"
+        onMouseEnter={() => setBottomHover(true)}
+        onMouseLeave={() => setBottomHover(false)}
+      >
+        <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-black to-transparent pointer-events-none z-10" />
+        <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-black to-transparent pointer-events-none z-10" />
+        <div className="flex">
+          <div
+            ref={bottomRef}
+            className="flex gap-6"
+            style={{
+              width: "300%",
+              willChange: "transform",
+            }}
+          >
+            {tripleImages.map((img, idx) => (
+              <div
+                key={idx}
+                className="flex-shrink-0 w-64 h-52 sm:w-72 sm:h-56 md:w-80 md:h-60 lg:w-88 lg:h-64 rounded-xl overflow-hidden shadow-xl border border-gray-700"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-full object-cover transition-all duration-300 hover:brightness-110"
+                  draggable={false}
+                  width={352}
+                  height={224}
+                  loading="lazy"
+                  quality={85}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
       
       <style jsx>{`
         .w-88 {
