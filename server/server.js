@@ -7,19 +7,38 @@ const WorkerRoutes = require("./routes/WorkerRoutes");
 const RequestRoutes = require("./routes/RequestRoutes");
 const AdminRoutes = require("./routes/AdminRoutes");
 const ServiceRoutes = require("./routes/ServiceRouter");
-const isAdmin = require("./middleware/isAdmin");
 const cron = require("node-cron");
 const app = express();
+const https = require("https");
+
 
 //parse the data
 app.use(express.json());
 
 //use cors
-app.use(cors({ origin: "*" }));
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://skill-trade-next-15.vercel.app",
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, Postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+
+}));
 
 //config dotenv
 dotenv.config();
-  
+
 // connect database
 ConnectDb();
 
@@ -31,8 +50,13 @@ app.use("/api/v1/services", ServiceRoutes);
 // use with middleware
 app.use("/api/v1/admin", AdminRoutes);
 
-cron.schedule("*/5 * * * *", () => {
-  https.get(RENDER_URL, (res) => {
+app.get("/", (req, res) => {
+  res.status(200).send("Hello from SkillTrade backend!");
+});
+
+
+cron.schedule("* * * * *", () => {
+  https.get(process.env.RENDER_URL, (res) => {
     console.log(`[${new Date().toISOString()}] Ping successful:`, res.statusCode);
   }).on("error", (err) => {
     console.error(`[${new Date().toISOString()}] Ping failed:`, err.message);

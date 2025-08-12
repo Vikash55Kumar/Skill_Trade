@@ -132,25 +132,25 @@ function Home() {
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
           <div className="bg-white p-6 rounded-lg shadow-md text-center">
             <p className="text-4xl font-bold text-gray-900">
-              <CountUp end={5000} duration={25.5} suffix="+" />
+              <CountUp end={5000} duration={3} suffix="+" />
             </p>
             <p className="text-gray-600">Professionals</p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md text-center">
             <p className="text-4xl font-bold text-gray-900">
-              <CountUp end={10} duration={25.5} suffix="K+" />
+              <CountUp end={10} duration={3} suffix="K+" />
             </p>
             <p className="text-gray-600">Completed Jobs</p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md text-center">
             <p className="text-4xl font-bold text-gray-900">
-              <CountUp end={4.8} duration={20.5} suffix="★" />
+              <CountUp end={4.8} duration={3} suffix="★" />
             </p>
             <p className="text-gray-600">Average Rating</p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md text-center">
             <p className="text-4xl font-bold text-gray-900">
-              <CountUp end={50} duration={25.5} suffix="+" />
+              <CountUp end={50} duration={3} suffix="+" />
             </p>
             <p className="text-gray-600">Service Categories</p>
           </div>

@@ -303,7 +303,7 @@ const Page = () => {
 
                       {/* Stat number */}
                       <div className="text-3xl lg:text-4xl font-bold mb-2 group-hover:scale-110 transition-transform duration-300">
-                        <CountUp end={stat.number} duration={25.5} suffix={stat.suffix} />
+                        <CountUp end={stat.number} duration={3} suffix={stat.suffix} />
                       </div>
 
                       {/* Stat label */}
