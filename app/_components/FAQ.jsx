@@ -69,6 +69,7 @@ const FAQ = () => {
               <div className="absolute -top-4 -left-4 w-8 h-8 bg-gray-400 rounded-full opacity-20"></div>
               <div className="absolute -bottom-6 -right-6 w-12 h-12 bg-gray-400 rounded-full opacity-15"></div>
               
+              {/* Svg Image */}
               <div className="flex-1 flex items-center justify-center">
                 <Image
                   src="/faq.svg"
